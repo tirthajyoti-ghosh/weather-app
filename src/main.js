@@ -2,19 +2,40 @@ import "./styles/main.scss";
 
 const form = document.getElementById('form');
 
-const displayError = (error) => {
-  const data = document.getElementById('data');
-  data.innerHTML = 'City not found';
+const displayError = () => {
+  const alert = document.querySelector('.alert');
+  alert.classList.add('show');
+};
+
+const parseData = (response) => {
+
+  return {
+    cityName: response.name,
+    countryCode: response.sys.country,
+    description: response.weather[0].description,
+    icon: response.weather[0].icon,
+    temperature: response.main.temp,
+    feelsTemp: response.main.feels_like,
+    minTemp: response.main.temp_min,
+    maxTemp: response.main.temp_max,
+    clouds: response.clouds.all,
+    wind: response.wind.speed,
+  };
 };
 
 form.onsubmit = (e) => {
   e.preventDefault();
-  const city = document.getElementById('city').value;
+
+  const alert = document.querySelector('.alert');
+  alert.classList.remove('show');
+
+  const city = document.getElementById('city_input').value;  
   
   getData(city).then((response) => {
-    displayData(response);
-  }).catch((err) => {
-    displayError(err);    
+    const data = parseData(response);    
+    displayData(data);
+  }).catch(() => {
+    displayError();    
   });  
 };
 
@@ -26,60 +47,35 @@ const getData = async (city) => {
   return json;
 };
 
-const createElement = (tag, classes='', text='') => {
-  const element = document.createElement(tag);
-  element.setAttribute('class', classes);
-  element.innerText = text;
+const toC = (temp) => { parseFloat(temp) - 273.15; };
 
-  return element;
-};
-
-const changeUnit = (temp, unit) => {
-  let convertedTemp = 0;
-  if (unit === 'C') {
-    convertedTemp = `${parseFloat(temp) - 273.15} °C`;
-  } else {
-    convertedTemp = `${(parseFloat(temp) - 273.15) * 9/5 + 32} °F`;
-  }
-
-  return convertedTemp;
-};
+const toF = (temp) => { (parseFloat(temp) - 273.15) * 9/5 + 32; };
 
 
 const displayData = (data) => {
 
-  let {name, weather: [{main, description, icon}], main: {temp, feels_like, temp_min, temp_max}, clouds: {all}} =  data;
+  let {cityName, countryCode, description, icon, temperature, feelsTemp, minTemp, maxTemp, clouds, wind} =  data;
 
-  const displayData = document.getElementById('data');
-  displayData.innerHTML = "";
+  const city = document.getElementById('city-name');
+  const country = document.getElementById('country-code');
+  const desc = document.getElementById('description');
+  const image = document.getElementById('weather-image');
+  const temp = document.getElementById('temperature');
+  const feelsLikeTemp = document.getElementById('feels-temp');
+  const tempMin = document.getElementById('min-temp');
+  const tempMax = document.getElementById('max-temp');
+  const cloudiness = document.getElementById('clouds');
+  const windSpeed = document.getElementById('wind');
 
-  const cityName = createElement('h2', '', `City: ${name}`);
-  const image = createElement('img');
-  const weather = createElement('p', '', `Weather: ${main}`);
-  const weatherDesc = createElement('p', '', `Description: ${description}`);
-  const temperature = createElement('p', '', `Temperature: ${changeUnit(temp, 'C')}`);
-  const feelTemp = createElement('p', '', `Feels like: ${changeUnit(feels_like, 'C')}`);
-  const minTemp = createElement('p', '', `Min temp.: ${changeUnit(temp_min, 'C')}`);
-  const maxTemp = createElement('p', '', `Max temp.: ${changeUnit(temp_max, 'C')}`);
-  const clouds = createElement('p', '', `Clouds: ${all}%`);
-
-  displayData.appendChild(cityName);
-
+  city.innerText = cityName;
+  country.innerText = countryCode;
+  desc.innerText = description;
   image.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-  displayData.appendChild(image);
-
-  displayData.appendChild(weather);
-  
-  displayData.appendChild(weatherDesc);
-
-  displayData.appendChild(temperature);
-
-  displayData.appendChild(feelTemp);
-
-  displayData.appendChild(minTemp);
-
-  displayData.appendChild(maxTemp);
-
-  displayData.appendChild(clouds);
+  temp.innerText = `${temperature}°`;
+  feelsLikeTemp.innerText = `${feelsTemp}°`;
+  tempMin.innerText = `${minTemp}°`;
+  tempMax.innerText = `${maxTemp}°`;
+  cloudiness.innerText = clouds;
+  windSpeed.innerText = wind;
 
 };
