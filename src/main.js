@@ -2,6 +2,7 @@ import "./styles/main.scss";
 
 const weatherApp = (() => {
   var responseData = {};
+  const form = document.getElementById('form');
 
   const displayError = () => {
     const alert = document.querySelector('.alert');
@@ -52,6 +53,11 @@ const weatherApp = (() => {
 
   document.getElementById('convertToC').addEventListener('click', () => {
     const { temp, feelsLikeTemp, tempMin, tempMax } = retrieveAllTempNodes();
+
+    if (temp.innerText === '--°') {
+      return;
+    }
+
     const {temperature, feelsTemp, minTemp, maxTemp} =  responseData;
 
     temp.innerText = `${toC(temperature)}°`;
@@ -63,6 +69,11 @@ const weatherApp = (() => {
 
   document.getElementById('convertToF').addEventListener('click', () => {
     const { temp, feelsLikeTemp, tempMin, tempMax } = retrieveAllTempNodes();
+
+    if (temp.innerText === '--°') {
+      return;
+    }
+    
     const {temperature, feelsTemp, minTemp, maxTemp} =  responseData;
 
     temp.innerText = `${toF(temperature)}°`;
@@ -100,7 +111,6 @@ const weatherApp = (() => {
     console.log(responseData);
   };
 
-  const form = document.getElementById('form');
 
   form.onsubmit = (e) => {
     e.preventDefault();
