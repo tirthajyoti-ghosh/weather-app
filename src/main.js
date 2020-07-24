@@ -1,11 +1,19 @@
 const form = document.getElementById('form');
 
+const displayError = (error) => {
+  const data = document.getElementById('data');
+  data.innerHTML = 'City not found';
+};
+
 form.onsubmit = (e) => {
   e.preventDefault();
   const city = document.getElementById('city').value;
-
-  displayData(city);
   
+  getData(city).then((response) => {
+    displayData(response);
+  }).catch((err) => {
+    displayError(err);    
+  });  
 };
 
 const getData = async (city) => {
@@ -24,48 +32,40 @@ const createElement = (tag, classes='', text='') => {
   return element;
 };
 
+const displayData = (data) => {
 
+  const {name, weather: [{main, description, icon}], main: {temp, feels_like, temp_min, temp_max}, clouds: {all}} =  data;
 
-const displayData = (city) => {
-  const data = document.getElementById('data');
-  data.innerHTML = "";
+  const displayData = document.getElementById('data');
+  displayData.innerHTML = "";
 
+  const cityName = createElement('h2', '', `City: ${name}`);
   const image = createElement('img');
-  const weather = createElement('p');
-  const weatherDesc = createElement('p');
-  const temp = createElement('p');
-  const feelTemp = createElement('p');
-  const minTemp = createElement('p');
-  const maxTemp = createElement('p');
-  const clouds = createElement('p');
+  const weather = createElement('p', '', `Weather: ${main}`);
+  const weatherDesc = createElement('p', '', `Description: ${description}`);
+  const temperature = createElement('p', '', `Temperature: ${temp}`);
+  const feelTemp = createElement('p', '', `Feels like: ${feels_like}`);
+  const minTemp = createElement('p', '', `Min temp.: ${temp_min}`);
+  const maxTemp = createElement('p', '', `Max temp.: ${temp_max}`);
+  const clouds = createElement('p', '', `Clouds: ${all}%`);
 
-  getData(city).then((json) => {
-    image.src = `http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`;
-    data.appendChild(image);
+  displayData.appendChild(cityName);
 
-    weather.innerText = `Weather: ${json.weather[0].main}`;
-    data.appendChild(weather);
-    
-    weatherDesc.innerText = `Description: ${json.weather[0].description}`;
-    data.appendChild(weatherDesc);
+  image.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  displayData.appendChild(image);
 
-    temp.innerText = `Temperature: ${json.main.temp}`;
-    data.appendChild(temp);
+  displayData.appendChild(weather);
+  
+  displayData.appendChild(weatherDesc);
 
-    feelTemp.innerText = `Feels like: ${json.main.feels_like}`;
-    data.appendChild(feelTemp);
+  displayData.appendChild(temperature);
 
-    minTemp.innerText = `Min temap.: ${json.main.temp_min}`;
-    data.appendChild(minTemp);
+  displayData.appendChild(feelTemp);
 
-    maxTemp.innerText = `Max temp.: ${json.main.temp_max}`;
-    data.appendChild(maxTemp);
+  displayData.appendChild(minTemp);
 
-    clouds.innerText = `Clouds: ${json.clouds.all}%`;
-    data.appendChild(clouds);
-  }).catch(error => {
-    console.log(error);    
-  });
+  displayData.appendChild(maxTemp);
 
+  displayData.appendChild(clouds);
 
 };
