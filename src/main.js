@@ -32,9 +32,21 @@ const createElement = (tag, classes='', text='') => {
   return element;
 };
 
+const changeUnit = (temp, unit) => {
+  let convertedTemp = 0;
+  if (unit === 'C') {
+    convertedTemp = `${parseFloat(temp) - 273.15} °C`;
+  } else {
+    convertedTemp = `${(parseFloat(temp) - 273.15) * 9/5 + 32} °F`;
+  }
+
+  return convertedTemp;
+};
+
+
 const displayData = (data) => {
 
-  const {name, weather: [{main, description, icon}], main: {temp, feels_like, temp_min, temp_max}, clouds: {all}} =  data;
+  let {name, weather: [{main, description, icon}], main: {temp, feels_like, temp_min, temp_max}, clouds: {all}} =  data;
 
   const displayData = document.getElementById('data');
   displayData.innerHTML = "";
@@ -43,10 +55,10 @@ const displayData = (data) => {
   const image = createElement('img');
   const weather = createElement('p', '', `Weather: ${main}`);
   const weatherDesc = createElement('p', '', `Description: ${description}`);
-  const temperature = createElement('p', '', `Temperature: ${temp}`);
-  const feelTemp = createElement('p', '', `Feels like: ${feels_like}`);
-  const minTemp = createElement('p', '', `Min temp.: ${temp_min}`);
-  const maxTemp = createElement('p', '', `Max temp.: ${temp_max}`);
+  const temperature = createElement('p', '', `Temperature: ${changeUnit(temp, 'C')}`);
+  const feelTemp = createElement('p', '', `Feels like: ${changeUnit(feels_like, 'C')}`);
+  const minTemp = createElement('p', '', `Min temp.: ${changeUnit(temp_min, 'C')}`);
+  const maxTemp = createElement('p', '', `Max temp.: ${changeUnit(temp_max, 'C')}`);
   const clouds = createElement('p', '', `Clouds: ${all}%`);
 
   displayData.appendChild(cityName);
