@@ -15,7 +15,7 @@
 
     <form action="#" id="form">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="city_input">
+        <input class="mdl-textfield__input" type="text" id="city_input" required>
         <label class="mdl-textfield__label" for="sample3">Enter city and press enter</label>
       </div>
     </form>
@@ -56,9 +56,9 @@
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
-        <button class="mdl-button mdl-js-button" onclick="toC()">°C</button>
+        <a class="mdl-button mdl-js-button" id="convertToC">°C</a>
 
-        <button class="mdl-button mdl-js-button" onclick="toF()">°F</button>
+        <a class="mdl-button mdl-js-button" id="convertToF">°F</a>
       </div>
     </div>
   </div>
