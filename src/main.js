@@ -1,3 +1,5 @@
+import "./styles/main.scss";
+
 const form = document.getElementById('form');
 
 const displayError = (error) => {
