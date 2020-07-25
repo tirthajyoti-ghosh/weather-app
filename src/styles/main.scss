@@ -3,6 +3,10 @@
   margin: 50px auto;
 }
 
+.mdl-textfield__input {
+  text-transform: capitalize;
+}
+
 .mdl-textfield,
 .mdl-card {
   width: 100%;
@@ -30,6 +34,7 @@
 #description {
   padding-left: 0;
   margin: 0;
+  text-transform: capitalize;
 }
 
 #temperature {
@@ -56,8 +61,8 @@
 }
 
 .alert.alert-danger {
-  background-color: #e91e63;
-  border: 1px solid #e91e63;
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
 }
 
 .alert.alert-danger .alert-icon {
