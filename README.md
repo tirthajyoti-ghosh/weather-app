@@ -119,6 +119,16 @@ To get a local copy up and running follow these simple steps.
     npm install
     ```
 
+4. Start local server
+
+    ```sh
+    npm run dev
+    ```
+
+   OR
+
+   Navigate to the `/dist` folder and open the `index.html` in your browser.
+
 <!-- USAGE EXAMPLES -->
 ## Usage
 
