@@ -69,7 +69,7 @@
 
 ![Weather App Screenshot](https://user-images.githubusercontent.com/57726348/88449813-ae554a80-ce67-11ea-8500-0e3505daf29a.png)
 
-This is a weather app that shows temperatures (current, feels like, min , max) , cloudiness (%) and wind speed (m/s) by city name. The city name is obtained from form input. This app consumes OpenWeather API in `JSON` format to show weather data.
+This is a weather app that shows temperatures (current, feels like, min, max), cloudiness (%), and wind speed (m/s) by city name. The city name is obtained from form input. This app consumes OpenWeather API in the `JSON` format to show weather data.
 
 Data points consumed:
 
@@ -124,7 +124,7 @@ To get a local copy up and running follow these simple steps.
 
 ![Usage example](https://user-images.githubusercontent.com/57726348/88450206-d98d6900-ce6a-11ea-9256-f20becd92fe2.jpg)
 
-1. Enter city name and press `Enter` key.
+1. Enter the city name and press the `Enter` key.
 2. Weather data is displayed here.
 3. These are buttons to convert the temperature in their respective units.
 
