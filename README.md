@@ -91,6 +91,10 @@ Data points consumed:
 * Webpack
 * ES6
 
+## Live demo
+
+Deployed to Raw Githack - [live demo](https://rawcdn.githack.com/tirthajyoti-ghosh/weather-app/0b69b93c02b080fa740a2ec65031f403675c142d/dist/index.html).
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -106,24 +110,25 @@ To get a local copy up and running follow these simple steps.
 
 ### Installation
 
-1. Get a free API Key at [https://openweathermap.org/api](https://openweathermap.org/api)
-2. Clone the repo
+1. Clone the repo
 
     ```sh
     git clone https://github.com/tirthajyoti-ghosh/weather-app.git
     ```
 
-3. Install NPM packages
+2. Install NPM packages
 
     ```sh
     npm install
     ```
 
-4. Start local server
+3. Start local server
 
     ```sh
     npm run dev
     ```
+    
+4. Visit `http://localhost:8080/` in your browser.
 
    OR
 
