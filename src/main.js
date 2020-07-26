@@ -9,19 +9,6 @@ const weatherApp = () => {
     alert.classList.add('show');
   };
 
-  const parseData = (response) => ({
-    cityName: response.name,
-    countryCode: response.sys.country,
-    description: response.weather[0].description,
-    icon: response.weather[0].icon,
-    temperature: response.main.temp,
-    feelsTemp: response.main.feels_like,
-    minTemp: response.main.temp_min,
-    maxTemp: response.main.temp_max,
-    clouds: response.clouds.all,
-    wind: response.wind.speed,
-  });
-
   const getData = async (city) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=9d00e1e258ffbc54d38829985755e490`);
 
@@ -48,67 +35,88 @@ const weatherApp = () => {
     };
   };
 
-  document.getElementById('convertToC').addEventListener('click', () => {
+  const retrieveAllTempResponse = () => {
     const {
-      temp, feelsLikeTemp, tempMin, tempMax,
-    } = retrieveAllTempNodes();
-
-    if (temp.innerText === '--°') {
-      return;
-    }
-
-    const {
-      temperature, feelsTemp, minTemp, maxTemp,
+      main: { temp: temperature },
+      main: { feels_like: feelsTemp },
+      main: { temp_min: minTemp },
+      main: { temp_max: maxTemp },
     } = responseData;
 
-    temp.innerText = `${toC(temperature)}°`;
-    feelsLikeTemp.innerText = `${toC(feelsTemp)}°`;
-    tempMin.innerText = `${toC(minTemp)}°`;
-    tempMax.innerText = `${toC(maxTemp)}°`;
-  });
-
-  document.getElementById('convertToF').addEventListener('click', () => {
-    const {
-      temp, feelsLikeTemp, tempMin, tempMax,
-    } = retrieveAllTempNodes();
-
-    if (temp.innerText === '--°') {
-      return;
-    }
-
-    const {
-      temperature, feelsTemp, minTemp, maxTemp,
-    } = responseData;
-
-    temp.innerText = `${toF(temperature)}°`;
-    feelsLikeTemp.innerText = `${toF(feelsTemp)}°`;
-    tempMin.innerText = `${toF(minTemp)}°`;
-    tempMax.innerText = `${toF(maxTemp)}°`;
-  });
-
-  const displayData = () => {
-    const {
-      cityName,
-      countryCode,
-      description,
-      icon,
+    return {
       temperature,
       feelsTemp,
       minTemp,
       maxTemp,
-      clouds,
-      wind,
+    };
+  };
+
+  const updateAllTemp = (temperature, feelsTemp, minTemp, maxTemp) => {
+    const {
+      temp, feelsLikeTemp, tempMin, tempMax,
+    } = retrieveAllTempNodes();
+
+    temp.innerText = `${temperature}°`;
+    feelsLikeTemp.innerText = `${feelsTemp}°`;
+    tempMin.innerText = `${minTemp}°`;
+    tempMax.innerText = `${maxTemp}°`;
+  };
+
+  document.getElementById('convertToC').addEventListener('click', () => {
+    const { temp } = retrieveAllTempNodes();
+
+    if (temp.innerText === '--°') {
+      return;
+    }
+
+    const {
+      temperature,
+      feelsTemp,
+      minTemp,
+      maxTemp,
+    } = retrieveAllTempResponse();
+
+    updateAllTemp(toC(temperature), toC(feelsTemp), toC(minTemp), toC(maxTemp));
+  });
+
+  document.getElementById('convertToF').addEventListener('click', () => {
+    const { temp } = retrieveAllTempNodes();
+
+    if (temp.innerText === '--°') {
+      return;
+    }
+
+    const {
+      temperature,
+      feelsTemp,
+      minTemp,
+      maxTemp,
+    } = retrieveAllTempResponse();
+
+    updateAllTemp(toF(temperature), toF(feelsTemp), toF(minTemp), toF(maxTemp));
+  });
+
+  const displayData = () => {
+    const {
+      name: cityName,
+      sys: { country: countryCode },
+      weather: [{ description }],
+      weather: [{ icon }],
+      clouds: { all: clouds },
+      wind: { speed: wind },
     } = responseData;
+
+    const {
+      temperature,
+      feelsTemp,
+      minTemp,
+      maxTemp,
+    } = retrieveAllTempResponse();
 
     const city = document.getElementById('city-name');
     const country = document.getElementById('country-code');
     const desc = document.getElementById('description');
     const image = document.getElementById('weather-image');
-
-    const {
-      temp, feelsLikeTemp, tempMin, tempMax,
-    } = retrieveAllTempNodes();
-
     const cloudiness = document.getElementById('clouds');
     const windSpeed = document.getElementById('wind');
 
@@ -116,10 +124,9 @@ const weatherApp = () => {
     country.innerText = countryCode;
     desc.innerText = description;
     image.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-    temp.innerText = `${toC(temperature)}°`;
-    feelsLikeTemp.innerText = `${toC(feelsTemp)}°`;
-    tempMin.innerText = `${toC(minTemp)}°`;
-    tempMax.innerText = `${toC(maxTemp)}°`;
+
+    updateAllTemp(toC(temperature), toC(feelsTemp), toC(minTemp), toC(maxTemp));
+
     cloudiness.innerText = clouds;
     windSpeed.innerText = wind;
   };
@@ -134,7 +141,7 @@ const weatherApp = () => {
     const city = document.getElementById('city_input').value;
 
     getData(city).then((response) => {
-      responseData = parseData(response);
+      responseData = response;
       displayData();
     }).catch(() => {
       displayError();
