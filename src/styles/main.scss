@@ -1,0 +1,81 @@
+.container {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.mdl-textfield__input {
+  text-transform: capitalize;
+}
+
+.mdl-textfield,
+.mdl-card {
+  width: 100%;
+  margin: 25px 0;
+}
+
+.mdl-card__title {
+  display: block;
+  position: relative;
+}
+
+#weather-image {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 120px;
+  height: 120px;
+}
+
+.mdl-card--border {
+  display: flex;
+  justify-content: space-around;
+}
+
+#description {
+  padding-left: 0;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+#temperature {
+  font-size: 6rem;
+  font-weight: 300;
+}
+
+.other p {
+  font-size: 17px;
+  margin: 0;
+}
+
+.alert {
+  background-color: #29d2e4;
+  border: 1px solid #29d2e4;
+  color: #fff;
+  padding: 15px 20px;
+  display: none;
+}
+
+.alert .alert-icon {
+  float: left;
+  margin-right: 15px;
+}
+
+.alert.alert-danger {
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.alert.alert-danger .alert-icon {
+  float: left;
+  margin-right: 15px;
+}
+
+.alert.alert-danger .alert-container {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.alert.show {
+  display: block;
+}

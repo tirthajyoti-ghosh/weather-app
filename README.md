@@ -29,27 +29,25 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://github.com/othneildrew/Best-README-Template/blob/master/images/logo.png?raw=true" alt="Logo" width="80" height="80">
+  <a href="https://github.com/tirthajyoti-ghosh/weather-app">
+    <img src="https://user-images.githubusercontent.com/57726348/88449500-02aafb00-ce65-11ea-9a69-1bc31d6d649e.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Weather App</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A weather app that shows weather data by city.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/tirthajyoti-ghosh/weather-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/tirthajyoti-ghosh/weather-app">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/tirthajyoti-ghosh/weather-app/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/tirthajyoti-ghosh/weather-app/issues">Request Feature</a>
   </p>
 </p>
-
-
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -66,79 +64,89 @@
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot](https://github.com/othneildrew/Best-README-Template/blob/master/images/screenshot.png?raw=true)](https://example.com)
+![Weather App Screenshot](https://user-images.githubusercontent.com/57726348/88449813-ae554a80-ce67-11ea-8500-0e3505daf29a.png)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
+This is a weather app that shows temperatures (current, feels like, min, max), cloudiness (%), and wind speed (m/s) by city name. The city name is obtained from form input. This app consumes OpenWeather API in the `JSON` format to show weather data.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+Data points consumed:
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+* City name
+* Country code
+* Weather description
+* Weather icon
+* Current temperature
+* Feels like temperature
+* Minimum temperature
+* Maximum temperature
+* Cloudiness
+* Wind speed
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
 
+* Material Design Lite
+* OpenWeatherMap
+* Webpack
+* ES6
 
+## Live demo
+
+Deployed to Raw Githack - [live demo](https://rawcdn.githack.com/tirthajyoti-ghosh/weather-app/0b69b93c02b080fa740a2ec65031f403675c142d/dist/index.html).
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm
-```sh
-npm install npm@latest -g
-```
+
+    ```sh
+    npm install npm@latest -g
+    ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-```sh
-git clone https://github.com/your_username_/Project-Name.git
-```
-3. Install NPM packages
-```sh
-npm install
-```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
+1. Clone the repo
 
+    ```sh
+    git clone https://github.com/tirthajyoti-ghosh/weather-app.git
+    ```
 
+2. Install NPM packages
+
+    ```sh
+    npm install
+    ```
+
+3. Start local server
+
+    ```sh
+    npm run dev
+    ```
+    
+4. Visit `http://localhost:8080/` in your browser.
+
+   OR
+
+   Navigate to the `/dist` folder and open the `index.html` in your browser.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+![Usage example](https://user-images.githubusercontent.com/57726348/88450206-d98d6900-ce6a-11ea-9256-f20becd92fe2.jpg)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
+1. Enter the city name and press the `Enter` key.
+2. Weather data is displayed here.
+3. These are buttons to convert the temperature in their respective units.
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
-
+See the [open issues](https://github.com/tirthajyoti-ghosh/weather-app/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -151,54 +159,38 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Tirthajyoti Ghosh - [@terrific_ghosh](https://twitter.com/terrific_ghosh) - itirthahere@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-
+Project Link: [https://github.com/tirthajyoti-ghosh/weather-app](https://github.com/tirthajyoti-ghosh/weather-app)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+
+* [OpenWeatherMap](https://openweathermap.org/api)
+* README Icon made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 * [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
 * [Font Awesome](https://fontawesome.com)
-
-
-
-
+* [Material Design Lite](https://getmdl.io/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/tirthajyoti-ghosh/weather-app.svg?style=flat-square
+[contributors-url]: https://github.com/tirthajyoti-ghosh/weather-app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/tirthajyoti-ghosh/weather-app.svg?style=flat-square
+[forks-url]: https://github.com/tirthajyoti-ghosh/weather-app/network/members
+[stars-shield]: https://img.shields.io/github/stars/tirthajyoti-ghosh/weather-app.svg?style=flat-square
+[stars-url]: https://github.com/tirthajyoti-ghosh/weather-app/stargazers
+[issues-shield]: https://img.shields.io/github/issues/tirthajyoti-ghosh/weather-app.svg?style=flat-square
+[issues-url]: https://github.com/tirthajyoti-ghosh/weather-app/issues
+[license-shield]: https://img.shields.io/github/license/tirthajyoti-ghosh/weather-app.svg?style=flat-square
+[license-url]: https://github.com/tirthajyoti-ghosh/weather-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[linkedin-url]: https://www.linkedin.com/in/tirthajyoti-ghosh/
