@@ -21,7 +21,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License](https://img.shields.io/github/license/tirthajyoti-ghosh/weather-app.svg?style=flat-square)](https://github.com/tirthajyoti-ghosh/weather-app/blob/development/LICENSE)
+[![License: MIT][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -190,7 +190,7 @@ Project Link: [https://github.com/tirthajyoti-ghosh/weather-app](https://github.
 [stars-url]: https://github.com/tirthajyoti-ghosh/weather-app/stargazers
 [issues-shield]: https://img.shields.io/github/issues/tirthajyoti-ghosh/weather-app.svg?style=flat-square
 [issues-url]: https://github.com/tirthajyoti-ghosh/weather-app/issues
-[license-shield]: https://img.shields.io/github/license/tirthajyoti-ghosh/weather-app.svg?style=flat-square
+[license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg
 [license-url]: https://github.com/tirthajyoti-ghosh/weather-app/blob/development/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/tirthajyoti-ghosh/
